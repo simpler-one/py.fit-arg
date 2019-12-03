@@ -3,7 +3,7 @@ import inspect
 
 def ignore_longer(func):
     spec = inspect.getfullargspec(func)
-    if spec.vararg is not None:
+    if spec.varargs is not None:
         return func
 
     arg_len = len(spec.args)
