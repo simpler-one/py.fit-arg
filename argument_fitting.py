@@ -1,7 +1,11 @@
 import inspect
 
 
-def ignore_longer(func):
+def to_varargs(func):
+    """
+    Convert to a variable args function
+    :param callable func: function
+    """
     spec = inspect.getfullargspec(func)
     if spec.varargs is not None:
         return func
@@ -13,7 +17,11 @@ def ignore_longer(func):
     return lambda *args, **kwargs: func(*args[:arg_len], **kwargs)
 
 
-def ignore_unknown(func):
+def to_varkw(func):
+    """
+    Convert to a variable keywords function
+    :param callable func: function
+    """
     spec = inspect.getfullargspec(func)
     if spec.varkw is not None:
         return func
