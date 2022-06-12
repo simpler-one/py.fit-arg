@@ -26,5 +26,5 @@ def to_varkw(func):
     if spec.varkw is not None:
         return func
 
-    known = dict(spec.args + spec.kwonlyargs)
+    known = set(spec.args + spec.kwonlyargs)
     return lambda *args, **kwargs: func(*args, **{k: v for k, v in kwargs.items() if k in known})
